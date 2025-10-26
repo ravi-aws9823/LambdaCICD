@@ -14,6 +14,8 @@ jobs:
         uses: montudor/action-zip@v1
       - name: Create Zip file for Lambda function
         run: zip -r code.zip .
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4 
       - name: AWS CLI v2
         uses: imehedi/actions-awscli-v2@latest
         with:
