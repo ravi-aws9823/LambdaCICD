@@ -16,16 +16,18 @@ jobs:
         run: zip -r code.zip .
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4 
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          
+          
+          
       
       
         with:
           args: "lambda update-function-code \
             --function-name arn:aws:lambda:us-east-1:273935537404:function:my-lambda \
             --zip-file fileb://code.zip"
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
         env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
